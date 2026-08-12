@@ -12,22 +12,19 @@ while True:
     random_number = random.randint(0,2)
     computer_pick = options[random_number]
     print(f"computer picked {computer_pick}.")
-    # Determine the winner
-    if user_input == 'rock' and computer_pick == 'scissor':
-        print("You won!")
-        user_wins += 1
-    elif user_input == 'paper' and computer_pick == 'rock':
-        print("You won!")
-        user_wins += 1
-    elif user_input == 'scissor' and computer_pick == 'paper':
-        print("You won!")
-        user_wins += 1
-    elif user_input == computer_pick:
-        print("It's a tie!")
-    else:
-        print("You lost!")
-        computer_wins += 1
+    # Get the index of user input and computer pick from the options list
+    user_input_index    = options.index(user_input)
+    computer_pick_index = options.index(computer_pick)
 
+    # Use modulus operator to determine the winner 
+    if user_input_index == computer_pick_index:
+        print("This is Tie!")
+    elif (user_input_index - computer_pick_index) % 3 == 1:
+        user_wins += 1
+        print('You Win!')
+    else:
+        computer_wins += 1
+        print('You Lose!')
 print('================================================================')
 print(f'You win {user_wins} times.\nComputer win {computer_wins} times.')
 print('GoodBye!')
